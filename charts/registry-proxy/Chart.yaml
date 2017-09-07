@@ -1,5 +1,5 @@
 name: registry-proxy
-home: https://github.com/deis/registry-proxy
+home: https://github.com/deisthree/registry-proxy
 version: <Will be populated by the ci before publishing the chart>
 description: Deis Workflow Registry Proxy.
 maintainers:

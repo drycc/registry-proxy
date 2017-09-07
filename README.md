@@ -8,7 +8,7 @@
 
 Deis (pronounced DAY-iss) Workflow is an open source Platform as a Service (PaaS) that adds a developer-friendly layer to any [Kubernetes](http://kubernetes.io) cluster, making it easy to deploy and manage applications on your own servers.
 
-For more information about the Deis Workflow, please visit the main project page at https://github.com/deis/workflow.
+For more information about the Deis Workflow, please visit the main project page at https://github.com/deisthree/workflow.
 
 We welcome your input! If you have feedback, please [submit an issue][issues]. If you'd like to participate in development, please read the "Development" section below and [submit a pull request][prs].
 
@@ -31,7 +31,7 @@ The Deis project welcomes contributions from all developers. The high level proc
 When you've built your new feature or fixed a bug, make sure you've added appropriate unit tests and run `make test` to ensure your code works properly.
 
 
-[issues]: https://github.com/deis/registry-proxy/issues
-[prs]: https://github.com/deis/registry-proxy/pulls
-[registry]: https://github.com/deis/registry
-[v2.18]: https://github.com/deis/workflow/releases/tag/v2.18.0
+[issues]: https://github.com/deisthree/registry-proxy/issues
+[prs]: https://github.com/deisthree/registry-proxy/pulls
+[registry]: https://github.com/deisthree/registry
+[v2.18]: https://github.com/deisthree/workflow/releases/tag/v2.18.0
