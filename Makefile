@@ -1,6 +1,6 @@
-# If DEIS_REGISTRY is not set, try to populate it from legacy DEV_REGISTRY
-DEIS_REGISTRY ?= $(DEV_REGISTRY)
-IMAGE_PREFIX ?= deis
+# If DRYCC_REGISTRY is not set, try to populate it from legacy DEV_REGISTRY
+DRYCC_REGISTRY ?= $(DEV_REGISTRY)
+IMAGE_PREFIX ?= drycc
 COMPONENT ?= registry-proxy
 
 include versioning.mk

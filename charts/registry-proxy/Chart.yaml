@@ -1,7 +1,7 @@
 name: registry-proxy
-home: https://github.com/deisthree/registry-proxy
+home: https://github.com/drycc/registry-proxy
 version: <Will be populated by the ci before publishing the chart>
-description: Deis Workflow Registry Proxy.
+description: Drycc Workflow Registry Proxy.
 maintainers:
-  - name: Deis Team
-    email: engineering@deis.com
+  - name: Drycc Team
+    email: engineering@drycc.com

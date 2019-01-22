@@ -2,11 +2,11 @@
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
-  name: deis-registry-proxy
+  name: drycc-registry-proxy
   labels:
-    heritage: deis
+    heritage: drycc
   annotations:
-    component.deis.io/version: {{ .Values.docker_tag }}
+    component.drycc.cc/version: {{ .Values.docker_tag }}
 spec:
   {{- if ge .Capabilities.KubeVersion.Minor "6" }}
   updateStrategy:
@@ -14,20 +14,20 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      app: deis-registry-proxy
-      heritage: deis
+      app: drycc-registry-proxy
+      heritage: drycc
   template:
     metadata:
-      name: deis-registry-proxy
+      name: drycc-registry-proxy
       labels:
-        heritage: deis
-        app: deis-registry-proxy
+        heritage: drycc
+        app: drycc-registry-proxy
     spec:
 {{- if (.Values.global.use_cni) }}
       hostNetwork: true
 {{- end}}
       containers:
-      - name: deis-registry-proxy
+      - name: drycc-registry-proxy
         image: quay.io/{{.Values.org}}/registry-proxy:{{.Values.docker_tag}}
         imagePullPolicy: {{.Values.pull_policy}}
 {{- if or (.Values.limits_cpu) (.Values.limits_memory)}}
@@ -42,9 +42,9 @@ spec:
 {{- end}}
         env:
         - name: REGISTRY_HOST
-          value: $(DEIS_REGISTRY_SERVICE_HOST)
+          value: $(DRYCC_REGISTRY_SERVICE_HOST)
         - name: REGISTRY_PORT
-          value: $(DEIS_REGISTRY_SERVICE_PORT)
+          value: $(DRYCC_REGISTRY_SERVICE_PORT)
         - name: BIND_ADDR
 {{- if (.Values.global.use_cni) }}
           value: {{ default "127.0.0.1:5555" .Values.global.registry_proxy_bind_addr | quote }}
