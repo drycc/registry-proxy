@@ -1,9 +1,3 @@
-
-|![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png) | Drycc Workflow will soon no longer be maintained.<br />Please [read the announcement](https://drycc.com/blog/2017/drycc-workflow-final-release/) for more detail. |
-|---:|---|
-| 09/07/2017 | Drycc Workflow [v2.18][] final release before entering maintenance mode |
-| 03/01/2018 | End of Workflow maintenance: critical patches no longer merged |
-
 # Drycc Registry Proxy
 
 Drycc (pronounced DAY-iss) Workflow is an open source Platform as a Service (PaaS) that adds a developer-friendly layer to any [Kubernetes](http://kubernetes.io) cluster, making it easy to deploy and manage applications on your own servers.
