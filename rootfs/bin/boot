@@ -15,9 +15,10 @@ sed -e "s/%HOST%/$REGISTRY_HOST/g" \
 
 # wait for registry to come online
 while ! curl -sS "$REGISTRY_HOST:$REGISTRY_PORT" &>/dev/null; do
-	printf "waiting for the registry (%s:%s) to come online...\n" "$REGISTRY_HOST" "$REGISTRY_PORT"
+	echo "waiting for the registry (%s:%s) to come online..."
+	echo "$REGISTRY_HOST" "$REGISTRY_PORT"
 	sleep 1
 done
 
-printf "starting registry-proxy...\n"
+echo "starting registry-proxy..."
 exec nginx -g "daemon off;"

@@ -5,6 +5,11 @@ COMPONENT ?= registry-proxy
 
 include versioning.mk
 
+SHELL_SCRIPTS = rootfs/bin/boot
+DEV_ENV_IMAGE := quay.io/drycc/go-dev:v0.22.0
+DEV_ENV_WORK_DIR := /go/src/${REPO_PATH}
+DEV_ENV_CMD := docker run --rm -v ${CURDIR}:${DEV_ENV_WORK_DIR} -w ${DEV_ENV_WORK_DIR} ${DEV_ENV_IMAGE}
+
 build: docker-build
 
 check-docker:
@@ -20,7 +25,9 @@ docker-build: check-docker
 	docker build ${DOCKER_BUILD_TAGS} -t ${IMAGE} rootfs
 	docker tag ${IMAGE} ${MUTABLE_IMAGE}
 
-test:
-	@echo "No tests :("
+test:  test-style
+
+test-style:
+	${DEV_ENV_CMD} shellcheck $(SHELL_SCRIPTS)
 
 .PHONY: build check-docker clean docker-build test
