@@ -10,7 +10,7 @@ global:
   #
   # Valid values are:
   # - on-cluster: Run registry within the Kubernetes cluster
-  # - off-cluster: Use registry outside the Kubernetes cluster (example: dockerhub,quay.io,self-hosted)
+  # - off-cluster: Use registry outside the Kubernetes cluster (example: dockerhub,self-hosted)
   # - ecr: Use Amazon's ECR
   # - gcr: Use Google's GCR
   registry_location: "on-cluster"

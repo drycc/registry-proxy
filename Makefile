@@ -6,7 +6,7 @@ COMPONENT ?= registry-proxy
 include versioning.mk
 
 SHELL_SCRIPTS = rootfs/bin/boot
-DEV_ENV_IMAGE := quay.io/drycc/go-dev:v0.22.0
+DEV_ENV_IMAGE := drycc/go-dev
 DEV_ENV_WORK_DIR := /go/src/${REPO_PATH}
 DEV_ENV_CMD := docker run --rm -v ${CURDIR}:${DEV_ENV_WORK_DIR} -w ${DEV_ENV_WORK_DIR} ${DEV_ENV_IMAGE}
 
