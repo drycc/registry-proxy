@@ -1,6 +1,6 @@
 # Drycc Registry Proxy
 
-[![Build Status](https://travis-ci.org/registry-proxy/pkg.svg?branch=master)](https://travis-ci.org/drycc/registry-proxy)
+[![Build Status](https://api.travis-ci.org/drycc/registry-proxy.svg?branch=master)](https://travis-ci.org/drycc/registry-proxy)
 
 Drycc (pronounced DAY-iss) Workflow is an open source Platform as a Service (PaaS) that adds a developer-friendly layer to any [Kubernetes](http://kubernetes.io) cluster, making it easy to deploy and manage applications on your own servers.
 
