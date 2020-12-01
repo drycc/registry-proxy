@@ -2,6 +2,7 @@
 DRYCC_REGISTRY ?= $(DEV_REGISTRY)
 IMAGE_PREFIX ?= drycc
 COMPONENT ?= registry-proxy
+PLATFORM ?= linux/amd64,linux/arm64
 
 include versioning.mk
 
@@ -24,6 +25,9 @@ clean: check-docker
 docker-build: check-docker
 	docker build ${DOCKER_BUILD_TAGS} -t ${IMAGE} rootfs
 	docker tag ${IMAGE} ${MUTABLE_IMAGE}
+
+docker-buildx: check-docker
+	docker buildx build --platform ${PLATFORM} -t ${IMAGE} rootfs --push
 
 test:  test-style
 
