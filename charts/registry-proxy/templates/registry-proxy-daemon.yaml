@@ -23,9 +23,6 @@ spec:
         heritage: drycc
         app: drycc-registry-proxy
     spec:
-{{- if (.Values.global.use_cni) }}
-      hostNetwork: true
-{{- end}}
       containers:
       - name: drycc-registry-proxy
         image: {{.Values.imageRegistry}}/{{.Values.imageOrg}}/registry-proxy:{{.Values.imageTag}}
@@ -46,14 +43,8 @@ spec:
         - name: REGISTRY_PORT
           value: $(DRYCC_REGISTRY_SERVICE_PORT)
         - name: BIND_ADDR
-{{- if (.Values.global.use_cni) }}
-          value: {{ default "127.0.0.1:5555" .Values.global.registry_proxy_bind_addr | quote }}
-{{- else }}
           value: {{ default "80" .Values.global.registry_proxy_bind_addr | quote }}
-{{- end }}
-{{- if not (.Values.global.use_cni) }}
         ports:
         - containerPort: 80
           hostPort: {{.Values.global.registryProxyPort}}
-{{- end }}
 {{- end }}
