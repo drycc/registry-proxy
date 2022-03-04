@@ -3,7 +3,7 @@
 # fail if no hostname is provided
 REGISTRY_HOST=${REGISTRY_HOST:?no host}
 REGISTRY_PORT=${REGISTRY_PORT:-80}
-BIND_ADDR=${BIND_ADDR:-80}
+BIND_ADDR=${BIND_ADDR:-8080}
 
 # we are always listening on port 80
 # https://github.com/nginxinc/docker-nginx/blob/43c112100750cbd1e9f2160324c64988e7920ac9/stable/jessie/Dockerfile#L25

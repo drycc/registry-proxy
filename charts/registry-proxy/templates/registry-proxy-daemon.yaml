@@ -46,9 +46,7 @@ spec:
           value: $(DRYCC_REGISTRY_SERVICE_HOST)
         - name: REGISTRY_PORT
           value: $(DRYCC_REGISTRY_SERVICE_PORT)
-        - name: BIND_ADDR
-          value: {{ default "8080" .Values.global.registryProxyBindAddr | quote }}
         ports:
-        - containerPort: {{ default "8080" .Values.global.registryProxyBindAddr | quote }}
+        - containerPort: 8080
           hostPort: {{.Values.global.registryProxyPort}}
 {{- end }}
