@@ -23,6 +23,10 @@ spec:
         heritage: drycc
         app: drycc-registry-proxy
     spec:
+      securityContext:
+        fsGroup: 1001
+        runAsGroup: 1001
+        runAsUser: 1001
       containers:
       - name: drycc-registry-proxy
         image: {{.Values.imageRegistry}}/{{.Values.imageOrg}}/registry-proxy:{{.Values.imageTag}}
@@ -43,8 +47,8 @@ spec:
         - name: REGISTRY_PORT
           value: $(DRYCC_REGISTRY_SERVICE_PORT)
         - name: BIND_ADDR
-          value: {{ default "80" .Values.global.registry_proxy_bind_addr | quote }}
+          value: {{ default "8080" .Values.global.registryProxyBindAddr | quote }}
         ports:
-        - containerPort: 80
+        - containerPort: {{ default "8080" .Values.global.registryProxyBindAddr | quote }}
           hostPort: {{.Values.global.registryProxyPort}}
 {{- end }}
