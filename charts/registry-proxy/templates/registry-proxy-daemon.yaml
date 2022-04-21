@@ -42,10 +42,21 @@ spec:
 {{- end}}
 {{- end}}
         env:
-        - name: REGISTRY_HOST
-          value: $(DRYCC_REGISTRY_SERVICE_HOST)
-        - name: REGISTRY_PORT
-          value: $(DRYCC_REGISTRY_SERVICE_PORT)
+        - name: "DRYCC_REGISTRY_HOST"
+          valueFrom:
+            secretKeyRef:
+              name: registry-secret
+              key: host
+        - name: "DRYCC_REGISTRY_USERNAME"
+          valueFrom:
+            secretKeyRef:
+              name: registry-secret
+              key: username
+        - name: "DRYCC_REGISTRY_PASSWORD"
+          valueFrom:
+            secretKeyRef:
+              name: registry-secret
+              key: password
         ports:
         - containerPort: 8080
           hostPort: {{.Values.global.registryProxyPort}}
