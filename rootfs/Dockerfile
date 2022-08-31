@@ -26,7 +26,7 @@ RUN groupadd drycc --gid ${DRYCC_GID} \
 
 COPY bin /bin/
 COPY etc/nginx/ ${DRYCC_HOME_DIR}
-RUN chown -R ${DRYCC_GID}:${DRYCC_UID} ${DRYCC_HOME_DIR}
+RUN chown -R ${DRYCC_UID}:${DRYCC_GID} ${DRYCC_HOME_DIR}
 
 USER ${DRYCC_UID}
 WORKDIR ${DRYCC_HOME_DIR}
