@@ -1,5 +1,6 @@
 name: registry-proxy
 home: https://github.com/drycc/registry-proxy
+apiVersion: v2
 version: v1.0.0
 description: Drycc Workflow Registry Proxy.
 maintainers:
