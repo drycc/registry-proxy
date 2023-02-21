@@ -1,5 +1,5 @@
 # Drycc Registry Proxy
-[![Build Status](https://drone.drycc.cc/api/badges/drycc/registry-proxy/status.svg)](https://drone.drycc.cc/drycc/registry-proxy)
+[![Build Status](https://woodpecker.drycc.cc/api/badges/drycc/registry-proxy/status.svg)](https://woodpecker.drycc.cc/drycc/registry-proxy)
 
 Drycc (pronounced DAY-iss) Workflow is an open source Platform as a Service (PaaS) that adds a developer-friendly layer to any [Kubernetes](http://kubernetes.io) cluster, making it easy to deploy and manage applications on your own servers.
 
