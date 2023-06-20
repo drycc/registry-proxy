@@ -24,11 +24,11 @@ clean: check-docker
 	docker rmi $(IMAGE)
 
 docker-build: check-docker
-	docker build ${DOCKER_BUILD_TAGS} -t ${IMAGE} rootfs
+	docker build ${DOCKER_BUILD_TAGS} --build-arg CODENAME=${CODENAME} -t ${IMAGE} rootfs
 	docker tag ${IMAGE} ${MUTABLE_IMAGE}
 
 docker-buildx: check-docker
-	docker buildx build --platform ${PLATFORM} -t ${IMAGE} rootfs --push
+	docker buildx build --build-arg CODENAME=${CODENAME} --platform ${PLATFORM} -t ${IMAGE} rootfs --push
 
 test:  test-style
 
