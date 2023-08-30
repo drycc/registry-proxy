@@ -31,16 +31,16 @@ spec:
       - name: drycc-registry-proxy
         image: {{.Values.imageRegistry}}/{{.Values.imageOrg}}/registry-proxy:{{.Values.imageTag}}
         imagePullPolicy: {{.Values.imagePullPolicy}}
-{{- if or (.Values.limitsCpu) (.Values.limitsMemory)}}
+        {{- if or (.Values.limitsCpu) (.Values.limitsMemory)}}
         resources:
           limits:
-{{- if (.Values.limitsCpu) }}
+            {{- if (.Values.limitsCpu) }}
             cpu: {{.Values.limitsCpu}}
-{{- end}}
-{{- if (.Values.limitsMemory) }}
+            {{- end}}
+            {{- if (.Values.limitsMemory) }}
             memory: {{.Values.limitsMemory}}
-{{- end}}
-{{- end}}
+            {{- end}}
+        {{- end}}
         env:
         - name: "DRYCC_REGISTRY_HOST"
           valueFrom:
