@@ -9,7 +9,7 @@ We welcome your input! If you have feedback, please [submit an issue][issues]. I
 
 # About
 
-registry-proxy is a proxy deployed on every Kubernetes worker node, proxying all requests to the Drycc Workflow [registry][registry]. This allows the worker nodes' Docker daemons to communicate to the registry over localhost, bypassing the need for adding the `--insecure-registry` flag to the daemons.
+registry-proxy is a proxy deployed on every Kubernetes worker node, proxying all requests to the Drycc Workflow [registry][registry]. This allows the worker nodes daemons to communicate to the registry over localhost, bypassing the need for adding the `--insecure-registry` flag to the daemons.
 
 # Development
 

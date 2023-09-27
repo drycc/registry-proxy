@@ -10,29 +10,26 @@ include versioning.mk
 SHELL_SCRIPTS = rootfs/bin/boot
 DEV_ENV_IMAGE := ${DEV_REGISTRY}/drycc/go-dev
 DEV_ENV_WORK_DIR := /opt/drycc/go/src/${REPO_PATH}
-DEV_ENV_CMD := docker run --rm -v ${CURDIR}:${DEV_ENV_WORK_DIR} -w ${DEV_ENV_WORK_DIR} ${DEV_ENV_IMAGE}
+DEV_ENV_CMD := podman run --rm -v ${CURDIR}:${DEV_ENV_WORK_DIR} -w ${DEV_ENV_WORK_DIR} ${DEV_ENV_IMAGE}
 
-build: docker-build
+build: podman-build
 
-check-docker:
-	@if [ -z $$(which docker) ]; then \
-	  echo "Missing \`docker\` client which is required for development"; \
+check-podman:
+	@if [ -z $$(which podman) ]; then \
+	  echo "Missing \`podman\` client which is required for development"; \
 	  exit 2; \
 	fi
 
-clean: check-docker
-	docker rmi $(IMAGE)
+clean: check-podman
+	podman rmi $(IMAGE)
 
-docker-build: check-docker
-	docker build ${DOCKER_BUILD_TAGS} --build-arg CODENAME=${CODENAME} -t ${IMAGE} rootfs
-	docker tag ${IMAGE} ${MUTABLE_IMAGE}
-
-docker-buildx: check-docker
-	docker buildx build --build-arg CODENAME=${CODENAME} --platform ${PLATFORM} -t ${IMAGE} rootfs --push
+podman-build: check-podman
+	podman build --build-arg CODENAME=${CODENAME} -t ${IMAGE} rootfs
+	podman tag ${IMAGE} ${MUTABLE_IMAGE}
 
 test:  test-style
 
 test-style:
 	${DEV_ENV_CMD} shellcheck $(SHELL_SCRIPTS)
 
-.PHONY: build check-docker clean docker-build test
+.PHONY: build check-podman clean podman-build test
