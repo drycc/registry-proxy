@@ -8,10 +8,8 @@ metadata:
   annotations:
     component.drycc.cc/version: {{ .Values.imageTag }}
 spec:
-  {{- if ge .Capabilities.KubeVersion.Minor "6" }}
   updateStrategy:
     type: RollingUpdate
-  {{- end }}
   selector:
     matchLabels:
       app: drycc-registry-proxy
