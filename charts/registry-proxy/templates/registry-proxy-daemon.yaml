@@ -27,6 +27,21 @@ spec:
         fsGroup: 1001
         runAsGroup: 1001
         runAsUser: 1001
+      initContainers:
+      - name: drycc-registry-init
+        image: {{.Values.imageRegistry}}/{{.Values.imageOrg}}/python-dev:latest
+        imagePullPolicy: {{.Values.imagePullPolicy}}
+        args:
+        - netcat
+        - -v
+        - -a
+        - $(DRYCC_REGISTRY_HOST)
+        env:
+        - name: "DRYCC_REGISTRY_HOST"
+          valueFrom:
+            secretKeyRef:
+              name: registry-secret
+              key: host
       containers:
       - name: drycc-registry-proxy
         image: {{.Values.imageRegistry}}/{{.Values.imageOrg}}/registry-proxy:{{.Values.imageTag}}
@@ -45,6 +60,35 @@ spec:
             memory: {{.Values.limitsMemory}}
             {{- end}}
         {{- end}}
+        {{- if not .Values.diagnosticMode.enabled }}
+        startupProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 5
+        {{- end }}
         env:
         - name: "DRYCC_REGISTRY_HOST"
           valueFrom:
